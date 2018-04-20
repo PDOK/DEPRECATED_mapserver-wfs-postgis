@@ -64,7 +64,7 @@ COPY /etc/example.map /srv/data/example.map
 ```
 Running the example above will create a service on the url: http:/localhost/example/wfs? An working example can be found: https://github.com/PDOK/mapserver-wfs-postgis/tree/natura2000-example
 
-A third way is to set ENV variables that will populate a connection.inc file
+A third way is to set ENV variables that will create a connection.inc file from a template, that can be used in the provided *.map file.
 ```
 CONNECTIONTYPE POSTGIS
 CONNECTION "host=${HOST} dbname=${DBNAME} user=${USER} password=${PASSWORD} port=${PORT}"

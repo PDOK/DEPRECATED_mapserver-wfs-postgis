@@ -61,9 +61,24 @@ The prefered way to use it is as a Docker base image for an other Dockerfile, in
 FROM pdok/mapserver-wfs-postgis
 
 COPY /etc/example.map /srv/data/example.map
-COPY /etc/example.connection.inc /srv/data/example.connection.inc
 ```
 Running the example above will create a service on the url: http:/localhost/example/wfs? An working example can be found: https://github.com/PDOK/mapserver-wfs-postgis/tree/natura2000-example
+
+A third way is to set ENV variables that will populate a connection.inc file
+```
+CONNECTIONTYPE POSTGIS
+CONNECTION "host=${HOST} dbname=${DBNAME} user=${USER} password=${PASSWORD} port=${PORT}"
+```
+The ENV variables are:
+- HOST
+- DBNAME
+- USER
+- PASSWORD
+- PORT
+
+```
+docker run -e HOST='your_host' -e PORT='your_port' -e DBNAME='your_dbname' -e USER='your_user' -e=PASSWORD='your_password' -d -p 80:80 --name mapserver-run-example -v /path/on/host:/srv/data pdok/mapserver-wfs-postgis
+```
 
 ## Misc
 ### Why no WMS

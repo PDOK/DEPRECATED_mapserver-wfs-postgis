@@ -1,0 +1,51 @@
+MAP
+  NAME          "example"
+  INCLUDE       "header.inc"
+
+  WEB
+    METADATA
+      "ows_title"               "Natura2000"
+      "ows_abstract"            "Samenvatting: Natura 2000 is het samenhangend netwerk van beschermde natuurgebieden in de Europese Unie bestaande uit Vogelrichtlijn- en Habitatrichtlijngebieden. Natura 2000-gebieden zijn een samenvoeging van beide en de daarin gelegen beschermde natuurmonumenten. In Nederland gaat het om 163 gebieden waarvan drie mariene gebieden in de Exclusieve Economische Zone (EEZ) op de Noordzee (incl. een voorgenomen Vogelrichtlijngebied in de EEZ). De Vogelrichtlijngebieden zijn merendeels aangewezen in de periode 1986-2000. De Habitatrichtlijngebieden worden aangewezen met de aanwijzing van de betreffende Natura 2000-gebieden. Deze service bevat de grenzen van de definitief aangewezen gebieden en de grenzen conform het ontwerp-besluit van de meeste overige gebieden. Voor enkele Habitatrichtlijngebieden waarvoor nog geen ontwerp-besluiten zijn gepubliceerd, bevat deze service de grenzen zoals die aan de Europese Commissie gemeld zijn."
+      "ows_keywordlist"         "Natuur,Habitatrichtlijn,Vogelrichtlijn,Natuurmonumenten,Natura2000,Beschermde gebieden"	 
+
+	  "wfs_inspire_capabilities" "url"
+	  "wfs_languages" "eng"               #first default, values according ISO 639-2/B
+
+	  "wfs_inspire_metadataurl_href" "http://www.nationaalgeoregister.nl/geonetwork/srv/eng/csw?service=CSW&version=2.0.2&request=GetRecordById&outputschema=http://www.isotc211.org/2005/gmd&elementsetname=full&id=32b1eb9e-c54f-4598-92d2-328eb77fa0d3"
+	  "wfs_inspire_metadataurl_format" "application/vnd.ogc.csw.GetRecordByIdResponse_xml"
+	  "wfs_inspire_dsid_code" "32b1eb9e-c54f-4598-92d2-328eb77fa0d3"
+
+	  "wfs_namespace_prefix" "natura2000"
+	  "wfs_namespace_uri" "http://natura2000.geonovum.nl"
+
+	  #"wfs_enable_request" "* !GetCapabilities" #disable getcapabilities
+    END
+  END
+
+  LAYER
+    NAME "natura2000"
+	#INCLUDE "connection.inc"
+    STATUS ON
+    TYPE POLYGON
+
+    METADATA
+      "ows_title"               "natura2000"	  
+      "gml_include_items"       "all"
+      "gml_geometries"          "geom"
+      "wfs_featureid"     		"msFID" 
+	  "wfs_extent" 				"10000 300000 280000 625000"
+      "gml_exclude_items" 		"msFID" 
+      "gml_include_items" 		"all" 	  
+      "ows_metadataurl_type"    "TC211"
+      "ows_metadataurl_format"  "text/plain"
+      "ows_metadataurl_href"    "https://www.nationaalgeoregister.nl/geonetwork/srv/dut/xml.metadata.get?uuid=8829e5dd-c861-4639-a6c8-fdbb6e3440d2"
+    END
+
+	CONNECTIONTYPE POSTGIS
+	CONNECTION "host=${HOST} dbname=${DBNAME} user=${USER} password=${PASSWORD} port=${PORT}"	
+	DATA "geom from (select gid as msFID, * from natura2000.natura2000) as subquery using unique gid using srid=28992"	
+
+
+  END # LAYER
+
+END # MAP

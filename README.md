@@ -1,7 +1,7 @@
 # Natura2000 example
 
 ## Introduction
-This is a example implementation of our [Docker base image](https://github.com/PDOK/mapserver-wfs-postgis). It contains a mapfile natura2000.map and a geopackage natura2000.gpkg containing the vector data.
+This is a example implementation of our [Docker base image](https://github.com/PDOK/mapserver-wfs-postgis). It contains a mapfile natura2000.map and needs a Postgis database containing the vector data.
 
 ## Usage
 ```

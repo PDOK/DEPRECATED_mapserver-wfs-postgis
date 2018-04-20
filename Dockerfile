@@ -108,7 +108,8 @@ RUN apt-get update && \
         libgeos-dev \
 		libpq-dev \		
         libproj-dev \
-        libxslt1-dev && \
+        libxslt1-dev \
+		gettext-base && \
     rm -rf /var/lib/apt/lists/*
 
 COPY etc/epsg /usr/share/proj
@@ -126,11 +127,14 @@ RUN apt-get clean
 
 RUN mkdir -p /var/log/supervisor
 
+COPY /template/connection.inc /srv/template/connection.inc
+
 COPY etc/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY etc/nginx.conf /etc/nginx/sites-available/default
 
 EXPOSE 80
 
-WORKDIR /etc/nginx
+COPY entry.sh /entry.sh
+RUN chmod +x /entry.sh
 
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+CMD /entry.sh

@@ -24,8 +24,8 @@ MAP
 
   LAYER
     NAME "natura2000"
-	INCLUDE "connection.inc"
-	DATA "geom from (select gid as msFID, * from natura2000.natura2000) as subquery using unique gid using srid=28992"		
+    INCLUDE "connection.inc"
+    DATA "geom from (select gid as msFID, * from natura2000.natura2000) as subquery using unique gid using srid=28992"		
     STATUS ON
     TYPE POLYGON
 

@@ -24,7 +24,8 @@ MAP
 
   LAYER
     NAME "natura2000"
-	#INCLUDE "connection.inc"
+	INCLUDE "connection.inc"
+	DATA "geom from (select gid as msFID, * from natura2000.natura2000) as subquery using unique gid using srid=28992"		
     STATUS ON
     TYPE POLYGON
 
@@ -40,11 +41,6 @@ MAP
       "ows_metadataurl_format"  "text/plain"
       "ows_metadataurl_href"    "https://www.nationaalgeoregister.nl/geonetwork/srv/dut/xml.metadata.get?uuid=8829e5dd-c861-4639-a6c8-fdbb6e3440d2"
     END
-
-	CONNECTIONTYPE POSTGIS
-	CONNECTION "host=${HOST} dbname=${DBNAME} user=${USER} password=${PASSWORD} port=${PORT}"	
-	DATA "geom from (select gid as msFID, * from natura2000.natura2000) as subquery using unique gid using srid=28992"	
-
 
   END # LAYER
 

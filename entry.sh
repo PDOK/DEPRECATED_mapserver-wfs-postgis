@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 
-cd /opt/geoserver/templates
-for f in $(find ./ -regex '.*\.xml'); do envsubst < $f > "/opt/geoserver/data_dir/$f"; done
+cd /srv/template
+for f in $(find ./ -regex '.*\.inc'); do envsubst < $f > "/srv/data/$f"; done
+
+/usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf

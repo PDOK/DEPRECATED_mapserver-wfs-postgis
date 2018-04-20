@@ -10,7 +10,7 @@ Fulfilling the first need the many purpose is to create an Docker base image tha
 Regarding the second need, finding a usable Mapserver Docker image is a challenge. Most images expose the &map=... QUERY_STRING in the getcapabilities, don't run in fastcgi and are based on Apache.
 
 ## What will it do
-It will create an WFS-only Mapserver application run with a modern web application NGINX in which the map=.. QUERY_STRING is fixed. The application will work best incombination with GDAL/OGR vector datasources like: [Geopackage](http://www.geopackage.org/) of SHAPE files. 
+It will create an WFS-only Mapserver application run with a modern web application NGINX in which the map=.. QUERY_STRING is fixed and the vector data source is (external) Postgis spatial database.
 
 ## Components
 This stack is composed of the following:

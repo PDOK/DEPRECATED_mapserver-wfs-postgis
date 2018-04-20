@@ -75,4 +75,4 @@ We would like to run this on a scalable infrastructure like Kubernetes that has 
 
 ### Used examples
 * https://github.com/srounet/docker-mapserver
-* ...
+* https://github.com/Amsterdam/mapserver

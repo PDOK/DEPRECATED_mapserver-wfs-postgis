@@ -5,7 +5,7 @@ This project aims to fulfill two needs:
 1. create a [OGC WFS](http://www.opengeospatial.org/standards/wfs) service that is deployable on a scalable infrastructure.
 2. create a useable [Docker](https://www.docker.com) base image.
 
-Fulfilling the first need the many purpose is to create an Docker base image that eventually can be run on a platform like [Kubernetes](https://kubernetes.io/).
+Fulfilling the first need the main purpose is to create an Docker base image that eventually can be run on a platform like [Kubernetes](https://kubernetes.io/).
 
 Regarding the second need, finding a usable Mapserver Docker image is a challenge. Most images expose the &map=... QUERY_STRING in the getcapabilities, don't run in fastcgi and are based on Apache.
 
@@ -62,7 +62,7 @@ FROM pdok/mapserver-wfs-postgis
 
 COPY /etc/example.map /srv/data/example.map
 ```
-Running the example above will create a service on the url: http:/localhost/example/wfs? An working example can be found: https://github.com/PDOK/mapserver-wfs-postgis/tree/natura2000-example
+Running the example above will create a service on the url: http://localhost/example/wfs? An working example can be found: https://github.com/PDOK/mapserver-wfs-postgis/tree/natura2000-example
 
 A third way is to set ENV variables that will create a connection.inc file from a template, that can be used in the provided *.map file.
 ```

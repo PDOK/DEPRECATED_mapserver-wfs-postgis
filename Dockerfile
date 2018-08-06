@@ -110,12 +110,17 @@ RUN apt-get update && \
         libpq-dev \
         libproj-dev \
         libxslt1-dev \
-        gettext-base && \
+        gettext-base \
+        wget \
+        gnupg && \
     rm -rf /var/lib/apt/lists/*
 
 COPY etc/epsg /usr/share/proj
 
 RUN chmod o+x /usr/local/bin/mapserv
+
+RUN echo "deb http://nginx.org/packages/mainline/debian/ stretch nginx" >> /etc/apt/sources.list
+RUN wget http://nginx.org/keys/nginx_signing.key && apt-key add nginx_signing.key
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \

@@ -1,2 +1,0 @@
-CONNECTIONTYPE POSTGIS
-CONNECTION "host=${HOST} dbname=${DBNAME} user=${USER} password=${PASSWORD} port=${PORT}"

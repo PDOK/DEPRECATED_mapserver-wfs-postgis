@@ -4,7 +4,7 @@ LABEL maintainer="pdok@kadaster.nl"
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ Europe/Amsterdam
 
-RUN apt-get update && \
+RUN apt-get -y update && \
     apt-get install -y --no-install-recommends \
         ca-certificates \
         gettext \    
@@ -21,7 +21,7 @@ RUN apt-get update && \
 
 RUN update-locale LANG=C.UTF-8
 
-RUN apt-get update && \
+RUN apt-get -y update && \
     apt-get install -y --no-install-recommends \
         libpng-dev \
         libfreetype6-dev \
@@ -98,7 +98,7 @@ ENV TZ Europe/Amsterdam
 COPY --from=0 /usr/local/bin /usr/local/bin
 COPY --from=0 /usr/local/lib /usr/local/lib
 
-RUN apt-get update && \
+RUN apt-get -y update && \
     apt-get install -y --no-install-recommends \
         libpng16-16  \
         libfreetype6 \

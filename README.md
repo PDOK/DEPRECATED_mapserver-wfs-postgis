@@ -1,3 +1,7 @@
+# DEPRECATED
+
+Please use https://github.com/PDOK/mapserver-docker
+
 # Mapserver WFS Postgis
 
 ## TL;DR
